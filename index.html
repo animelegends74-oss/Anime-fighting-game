@@ -1,44 +1,690 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anime Legends 24</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#fff;background:#050816}button{font:inherit}.screen{display:none;min-height:100vh;padding:18px}.screen.active{display:block}.bg{background:linear-gradient(#050816b8,#050816d9),url('assets/battle-bg.jpg') center/cover fixed}.wrap{max-width:1150px;margin:auto}.logo{text-align:center;font-size:clamp(30px,7vw,64px);font-weight:900;letter-spacing:2px;text-shadow:0 0 18px #318cff;margin-top:8vh}.tag{text-align:center;color:#b6c9e7}.menu{max-width:500px;margin:35px auto;display:grid;gap:12px}.btn{border:1px solid #3c79b8;background:linear-gradient(#173f74,#0d2348);color:white;border-radius:14px;padding:13px 18px;min-height:46px;font-weight:800;cursor:pointer}.btn:hover{filter:brightness(1.2)}.danger{background:linear-gradient(#70243a,#32101c)}.panel{background:#0b122be8;border:1px solid #315581;border-radius:20px;padding:20px;box-shadow:0 12px 35px #0008}.back{margin-bottom:15px}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.card{background:#0b1530;border:1px solid #315581;border-radius:15px;padding:9px;text-align:center;cursor:pointer}.card:hover{border-color:#8bd1ff;transform:translateY(-2px)}.avatar{height:125px;border-radius:11px;display:grid;place-items:center;font-size:58px;background:radial-gradient(circle,#3b558b,#10172e 68%)}.small{font-size:12px;color:#adc1df}.name{font-weight:900;margin-top:7px}.detail{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center}.big{min-height:390px;border-radius:22px;display:grid;place-items:center;font-size:150px;background:radial-gradient(circle,#3c568f,#0c1229 68%)}.stats{display:grid;gap:9px}.stat{background:#101a36;border:1px solid #29496e;border-radius:12px;padding:12px}.modes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:25px}.mode{min-height:150px}.mode b{font-size:21px;display:block}.mode span{display:block;color:#adc1df;margin-top:8px}.battle{background:linear-gradient(#05081666,#050816cc),url('assets/battle-bg.jpg') center/cover fixed}.topfighters{display:grid;grid-template-columns:1fr 1fr;gap:12px}.fighter{background:#071027dd;border:1px solid #3a5d87;border-radius:15px;padding:12px}.hp{height:18px;background:#35101b;border-radius:20px;overflow:hidden;margin-top:7px}.hp i{display:block;height:100%;width:100%;background:#2bd56d;transition:.3s}.stage{min-height:430px;display:grid;grid-template-columns:1fr 1fr;align-items:center;text-align:center;gap:20px}.bigfighter{font-size:125px}.controls{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}.levels{display:grid;grid-template-columns:repeat(10,1fr);gap:7px}.section{margin-top:20px}.section h3{color:#8dcbff}.winner{text-align:center;margin-top:8vh}.winart{font-size:150px}.winner h1{font-size:64px;color:#ffd45b}.toggle{display:flex;justify-content:space-between;align-items:center;background:#0e1833;border:1px solid #29496e;border-radius:12px;padding:15px;margin:10px 0}.note{color:#aabbd5;line-height:1.5}.teams{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-@media(max-width:850px){.grid{grid-template-columns:repeat(3,1fr)}.levels{grid-template-columns:repeat(5,1fr)}}@media(max-width:600px){.modes,.detail,.topfighters,.stage,.teams{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.avatar{height:110px}.big{min-height:260px;font-size:110px}.stage{min-height:300px}.winner h1{font-size:48px}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#050812;
+  color:white;
+  min-height:100vh;
+}
+button{
+  border:0;
+  cursor:pointer;
+  color:white;
+}
+.screen{
+  display:none;
+  min-height:100vh;
+  padding:20px;
+}
+.screen.active{display:block}
+
+/* HOME */
+#home{
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 30%,#25355f 0,#0a1020 45%,#02040a 100%);
+}
+.logo{
+  padding-top:55px;
+  font-size:42px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-shadow:0 0 20px #6ea8ff;
+}
+.subtitle{
+  margin:10px 0 35px;
+  color:#aebce0;
+}
+.main-buttons{
+  max-width:500px;
+  margin:auto;
+  display:grid;
+  gap:14px;
+}
+.main-btn{
+  padding:18px;
+  border-radius:14px;
+  font-size:18px;
+  font-weight:bold;
+  background:linear-gradient(135deg,#18284d,#304f91);
+  box-shadow:0 0 15px #172d60;
+}
+.main-btn:hover{transform:scale(1.02)}
+.footer{
+  margin-top:35px;
+  color:#91a1c7;
+}
+
+/* COMMON */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+.back{
+  background:#18233d;
+  padding:10px 18px;
+  border-radius:10px;
+}
+.title{
+  text-align:center;
+  font-size:30px;
+  margin-bottom:25px;
+}
+
+/* MODE */
+.mode-grid{
+  max-width:900px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;
+}
+.mode-card{
+  padding:30px 18px;
+  background:linear-gradient(145deg,#101b32,#1b3158);
+  border:1px solid #405b91;
+  border-radius:18px;
+  text-align:center;
+}
+.mode-card h2{margin:10px 0}
+.mode-card p{color:#aab7d2}
+
+/* CHARACTERS */
+.char-grid{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.char-card{
+  background:#10192d;
+  border:1px solid #30456f;
+  border-radius:15px;
+  padding:14px;
+  text-align:center;
+}
+.char-art{
+  height:110px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:65px;
+  background:radial-gradient(circle,#263b68,#080d19);
+  border-radius:12px;
+  margin-bottom:10px;
+}
+.char-card h3{font-size:16px}
+.element{
+  color:#9eb7e8;
+  font-size:13px;
+  margin:5px;
+}
+.select-btn{
+  margin-top:8px;
+  padding:8px 14px;
+  border-radius:8px;
+  background:#315aa4;
+}
+
+/* DETAILS */
+.details{
+  max-width:700px;
+  margin:auto;
+  text-align:center;
+  background:#0d1629;
+  border:1px solid #334b78;
+  border-radius:20px;
+  padding:30px;
+}
+.big-art{
+  width:230px;
+  height:230px;
+  margin:0 auto 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:120px;
+  border-radius:20px;
+  background:radial-gradient(circle,#314b82,#080c15);
+}
+.details p{
+  color:#b4c1dd;
+  margin:10px;
+}
+.start{
+  background:linear-gradient(135deg,#2878ff,#713cff);
+  padding:14px 30px;
+  border-radius:12px;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+/* BATTLE */
+#battle,#two{
+  background:
+    radial-gradient(circle at 50% 15%,rgba(80,110,180,.35),transparent 35%),
+    linear-gradient(#081226 0%,#101a2b 48%,#05070d 100%);
+  position:relative;
+  overflow:hidden;
+}
+.mountains{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:48%;
+  background:
+    polygon(0 100%,0 65%,12% 45%,22% 70%,35% 30%,50% 68%,64% 38%,78% 67%,90% 42%,100% 62%,100% 100%);
+  background-color:#0a0e18;
+  opacity:.95;
+}
+.stars{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(circle,#fff 1px,transparent 1px);
+  background-size:55px 55px;
+  opacity:.3;
+}
+.battle-content{
+  position:relative;
+  z-index:2;
+}
+.hp-row{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+.fighter-info{
+  width:45%;
+  background:rgba(5,10,22,.85);
+  padding:10px;
+  border-radius:12px;
+}
+.hp{
+  height:15px;
+  background:#3a1018;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:8px;
+}
+.hp-fill{
+  height:100%;
+  width:100%;
+  background:#32dc6b;
+}
+.arena{
+  height:420px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-around;
+  padding-bottom:45px;
+}
+.fighter{
+  text-align:center;
+  font-size:100px;
+  filter:drop-shadow(0 10px 10px #000);
+}
+.vs{
+  font-size:28px;
+  font-weight:bold;
+  color:#ff5c5c;
+}
+.controls{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  max-width:500px;
+  margin:auto;
+}
+.attack{
+  padding:15px 8px;
+  border-radius:12px;
+  background:#18294c;
+  border:1px solid #45639b;
+  font-weight:bold;
+}
+.special{background:#5b244f}
+
+/* 2v2 */
+.team{
+  width:45%;
+  display:grid;
+  gap:8px;
+}
+.team-card{
+  background:rgba(7,12,25,.9);
+  border:1px solid #334a77;
+  padding:10px;
+  border-radius:10px;
+}
+.team-card .hp{margin-top:5px}
+
+/* LEVELS */
+.level-grid{
+  max-width:850px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:7px;
+}
+.level{
+  padding:10px 2px;
+  border-radius:7px;
+  background:#182846;
+}
+.easy{border:1px solid #3aa96c}
+.medium{border:1px solid #d29b3f}
+.hard{border:1px solid #c34b59}
+
+/* SETTINGS */
+.settings{
+  max-width:600px;
+  margin:auto;
+  background:#101a2e;
+  border-radius:18px;
+  padding:25px;
+}
+.setting{
+  display:flex;
+  justify-content:space-between;
+  padding:18px 0;
+  border-bottom:1px solid #293858;
+}
+.toggle{
+  background:#2b8a58;
+  padding:6px 12px;
+  border-radius:20px;
+}
+
+/* WINNER */
+.winner{
+  text-align:center;
+  padding-top:80px;
+}
+.winner h1{
+  font-size:60px;
+  text-shadow:0 0 25px #ffd35c;
+}
+.winner-art{
+  font-size:130px;
+  margin:30px;
+}
+
+/* MOBILE */
+@media(max-width:650px){
+  .logo{font-size:30px}
+  .char-grid{grid-template-columns:repeat(2,1fr)}
+  .level-grid{grid-template-columns:repeat(5,1fr)}
+  .fighter{font-size:70px}
+  .arena{height:350px}
+  .hp-row{gap:8px}
+}
 </style>
 </head>
+
 <body>
-<section id="home" class="screen active bg"><div class="wrap"><div class="logo">ANIME LEGENDS 24</div><p class="tag">24 Characters • 100 Levels • One Legendary Battle</p><div class="menu"><button class="btn" onclick="show('modes')">PLAY</button><button class="btn" onclick="show('settings')">SETTINGS</button><button class="btn danger" onclick="alert('Thanks for playing Anime Legends 24!')">EXIT</button></div></div></section>
-<section id="modes" class="screen bg"><div class="wrap"><button class="btn back" onclick="show('home')">← Back</button><h1>Choose Mode</h1><div class="modes"><button class="btn mode" onclick="online('Play Online')"><b>⚔ Play Online</b><span>Battle another online player</span></button><button class="btn mode" onclick="online('Play with Friend')"><b>👥 Play with Friend</b><span>Connect with a friend online</span></button><button class="btn mode" onclick="startOffline()"><b>🤖 Play Offline</b><span>Fight the computer without internet</span></button><button class="btn mode" onclick="show('two2')"><b>⚡ 2 vs 2 Mode</b><span>Two heroes vs two villains</span></button></div></div></section>
-<section id="select" class="screen bg"><div class="wrap"><button class="btn back" onclick="show('modes')">← Back</button><h1 id="selectTitle">Select Hero</h1><p class="tag" id="selectSub">Choose your fighter</p><div id="cards" class="grid"></div></div></section>
-<section id="details" class="screen bg"><div class="wrap"><button class="btn back" onclick="show('select')">← Back</button><div class="panel detail"><div id="detailArt" class="big">🔥</div><div><h1 id="detailName"></h1><p id="detailMeta" class="small"></p><p id="detailDesc" class="note"></p><div id="detailStats" class="stats"></div><br><button class="btn" onclick="confirmCharacter()">SELECT CHARACTER</button></div></div></div></section>
-<section id="battle" class="screen battle"><div class="wrap"><button class="btn" onclick="show('home')">Menu</button><div class="topfighters" style="margin-top:12px"><div class="fighter"><b id="pName"></b><div class="hp"><i id="pBar"></i></div><span id="pText">100 / 100</span></div><div class="fighter"><b id="eName"></b><div class="hp"><i id="eBar"></i></div><span id="eText">100 / 100</span></div></div><div class="stage"><div><div id="pArt" class="bigfighter">🔥</div><h3 id="pPower"></h3></div><div><div id="eArt" class="bigfighter">🩸</div><h3 id="ePower"></h3></div></div><div class="panel"><h2 style="text-align:center">BATTLE</h2><div class="controls"><button class="btn" onclick="attack(10)">⚔ Basic Attack</button><button class="btn" onclick="attack(20)">✨ Special Power</button><button class="btn" onclick="guard()">🛡 Guard</button></div><p id="log" class="tag">Your move.</p></div></div></section>
-<section id="two2" class="screen bg"><div class="wrap"><button class="btn back" onclick="show('modes')">← Back</button><div class="panel"><h1>2 vs 2 Mode</h1><div class="teams"><div><h2>HERO TEAM</h2><div id="heroTeam"></div></div><div><h2>VILLAIN TEAM</h2><div id="villainTeam"></div></div></div><h1 style="text-align:center;margin:30px">VS</h1><p class="note">The interface is included. Real-time four-player online battles require a multiplayer server/backend.</p></div></div></section>
-<section id="levels" class="screen bg"><div class="wrap"><button class="btn back" onclick="show('home')">← Back</button><h1>100 Levels</h1><div id="levelGroups"></div></div></section>
-<section id="winner" class="screen bg"><div class="wrap panel winner"><div id="winArt" class="winart">🏆</div><h1>WINNER</h1><h2 id="winnerName"></h2><p id="levelText"></p><button class="btn" onclick="nextLevel()">NEXT LEVEL</button> <button class="btn" onclick="show('home')">BACK TO MENU</button></div></section>
-<section id="settings" class="screen bg"><div class="wrap"><button class="btn back" onclick="show('home')">← Back</button><h1>Settings</h1><div class="panel"><div class="toggle"><span>Sound Effects</span><button id="sfx" class="btn" onclick="toggle(this)">ON</button></div><div class="toggle"><span>Background Music</span><button id="music" class="btn" onclick="toggle(this)">OFF</button></div><div class="toggle"><span>Graphics Quality</span><select><option>High</option><option>Medium</option><option>Low</option></select></div><div class="toggle"><span>Keyboard / Mouse</span><span>Optional</span></div><p class="note">Music is OFF by default. Add original sound files later for real sound effects.</p></div></div></section>
+
+<!-- HOME -->
+<section id="home" class="screen active">
+  <div class="logo">ANIME LEGENDS 24</div>
+  <div class="subtitle">One Legendary Battle</div>
+
+  <div class="main-buttons">
+    <button class="main-btn" onclick="show('modes')">⚔️ Play Online</button>
+    <button class="main-btn" onclick="show('modes')">👥 Play with Friend</button>
+    <button class="main-btn" onclick="show('modes')">🤖 Play Offline</button>
+    <button class="main-btn" onclick="show('modes')">⚔️ 2 vs 2 Mode</button>
+    <button class="main-btn" onclick="show('settings')">⚙️ Settings</button>
+  </div>
+
+  <div class="footer">
+    24 Characters &nbsp; • &nbsp; 100 Levels &nbsp; • &nbsp; One Legendary Battle
+  </div>
+</section>
+
+<!-- MODES -->
+<section id="modes" class="screen">
+  <div class="topbar">
+    <button class="back" onclick="show('home')">← Back</button>
+  </div>
+  <h1 class="title">SELECT MODE</h1>
+
+  <div class="mode-grid">
+    <div class="mode-card">
+      <div style="font-size:45px">🌐</div>
+      <h2>Play Online</h2>
+      <p>Online multiplayer mode.</p>
+      <button class="select-btn" onclick="show('select')">Play</button>
+    </div>
+
+    <div class="mode-card">
+      <div style="font-size:45px">👥</div>
+      <h2>Play with Friend</h2>
+      <p>Battle with your friend.</p>
+      <button class="select-btn" onclick="show('select')">Play</button>
+    </div>
+
+    <div class="mode-card">
+      <div style="font-size:45px">🤖</div>
+      <h2>Play Offline</h2>
+      <p>Fight against the computer.</p>
+      <button class="select-btn" onclick="show('select')">Play</button>
+    </div>
+
+    <div class="mode-card">
+      <div style="font-size:45px">⚔️</div>
+      <h2>2 vs 2 Mode</h2>
+      <p>Two heroes vs two villains.</p>
+      <button class="select-btn" onclick="show('two')">Play</button>
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTER SELECT -->
+<section id="select" class="screen">
+  <div class="topbar">
+    <button class="back" onclick="show('modes')">← Back</button>
+  </div>
+
+  <h1 class="title">CHOOSE YOUR HERO</h1>
+
+  <div id="charGrid" class="char-grid"></div>
+</section>
+
+<!-- DETAILS -->
+<section id="details" class="screen">
+  <div class="topbar">
+    <button class="back" onclick="show('select')">← Back</button>
+  </div>
+
+  <div class="details">
+    <div id="detailArt" class="big-art">🔥</div>
+    <h1 id="detailName">Kaelron</h1>
+    <p id="detailElement">Fire</p>
+    <p id="detailWeapon">Flame Sword</p>
+    <p id="detailPower">Fireballs & Flames</p>
+    <button class="start" onclick="startBattle()">SELECT & BATTLE</button>
+  </div>
+</section>
+
+<!-- BATTLE -->
+<section id="battle" class="screen">
+  <div class="stars"></div>
+  <div class="mountains"></div>
+
+  <div class="battle-content">
+    <div class="topbar">
+      <button class="back" onclick="show('home')">Menu</button>
+      <strong>LEVEL <span id="battleLevel">1</span></strong>
+    </div>
+
+    <div class="hp-row">
+      <div class="fighter-info">
+        <b id="playerName">Kaelron</b>
+        <div class="hp"><div id="playerHp" class="hp-fill"></div></div>
+        <small id="playerHpText">100 / 100</small>
+      </div>
+
+      <div class="fighter-info">
+        <b id="enemyName">Venoxis</b>
+        <div class="hp"><div id="enemyHp" class="hp-fill"></div></div>
+        <small id="enemyHpText">100 / 100</small>
+      </div>
+    </div>
+
+    <div class="arena">
+      <div class="fighter">
+        <div id="playerArt">🔥</div>
+        <small id="playerPower">Fireballs & Flames</small>
+      </div>
+
+      <div class="vs">VS</div>
+
+      <div class="fighter">
+        <div id="enemyArt">☠️</div>
+        <small>Toxic Attacks & Illusions</small>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="attack" onclick="attack(10)">⚔️ BASIC<br>10 DMG</button>
+      <button class="attack special" onclick="attack(20)">🔥 SPECIAL<br>20 DMG</button>
+      <button class="attack" onclick="show('levels')">📋 LEVELS</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 VS 2 -->
+<section id="two" class="screen">
+  <div class="stars"></div>
+  <div class="mountains"></div>
+
+  <div class="battle-content">
+    <div class="topbar">
+      <button class="back" onclick="show('modes')">← Back</button>
+      <strong>2 VS 2</strong>
+    </div>
+
+    <div class="hp-row">
+      <div class="team">
+        <div class="team-card">🔥 Kaelron<div class="hp"><div class="hp-fill"></div></div></div>
+        <div class="team-card">⚡ Raizen<div class="hp"><div class="hp-fill"></div></div></div>
+      </div>
+
+      <div class="vs">VS</div>
+
+      <div class="team">
+        <div class="team-card">☠️ Venoxis<div class="hp"><div class="hp-fill"></div></div></div>
+        <div class="team-card">🌋 Magvar<div class="hp"><div class="hp-fill"></div></div></div>
+      </div>
+    </div>
+
+    <div class="arena">
+      <div class="fighter">🔥<br><small>Kaelron</small></div>
+      <div class="fighter">⚡<br><small>Raizen</small></div>
+      <div class="fighter">☠️<br><small>Venoxis</small></div>
+      <div class="fighter">🌋<br><small>Magvar</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEVELS -->
+<section id="levels" class="screen">
+  <div class="topbar">
+    <button class="back" onclick="show('home')">← Back</button>
+  </div>
+
+  <h1 class="title">100 LEVELS</h1>
+
+  <div class="level-grid" id="levelsGrid"></div>
+</section>
+
+<!-- WINNER -->
+<section id="winner" class="screen">
+  <div class="winner">
+    <h1>WINNER!</h1>
+    <div id="winnerArt" class="winner-art">🔥</div>
+    <h2 id="winnerName">Kaelron</h2>
+    <p>Level Completed!</p>
+    <br>
+    <button class="start" onclick="show('levels')">NEXT LEVEL</button>
+    <button class="back" onclick="show('home')">BACK TO MENU</button>
+  </div>
+</section>
+
+<!-- SETTINGS -->
+<section id="settings" class="screen">
+  <div class="topbar">
+    <button class="back" onclick="show('home')">← Back</button>
+  </div>
+
+  <h1 class="title">SETTINGS</h1>
+
+  <div class="settings">
+    <div class="setting">
+      <span>🔊 Sound Effects</span>
+      <button class="toggle" onclick="toggleSetting(this)">ON</button>
+    </div>
+
+    <div class="setting">
+      <span>🎵 Background Music</span>
+      <button class="toggle" onclick="toggleSetting(this)">OFF</button>
+    </div>
+
+    <div class="setting">
+      <span>🎮 Graphics Quality</span>
+      <b>HIGH</b>
+    </div>
+
+    <div class="setting">
+      <span>⌨️ Keyboard / Mouse</span>
+      <b>AVAILABLE</b>
+    </div>
+  </div>
+</section>
+
 <script>
-const heroes=[['Kaelron','Fire','🔥','Flame Sword','Fireballs & Flames'],['Ryven','Water','💧','Aqua Spear','Water Waves & Blades'],['Raizen','Lightning','⚡','Thunder Katana','Electric Attacks & Speed Boost'],['Kairox','Wind','🌪️','Twin Blades','Wind Blades & Gusts'],['Terrik','Earth','🪨','Earth Hammer','Rocks & Shields'],['Fryzen','Ice','❄️','Frost Axe','Ice Attacks & Freeze'],['Solvian','Light','☀️','Solar Blade','Energy Beams & Shield'],['Nyxen','Shadow','🌑','Shadow Scythe','Shadow Attacks & Teleport'],['Virel','Nature','🌿','Vine Bow','Vines & Thorns'],['Lunaris','Moon','🌙','Moon Chakram','Crescent Blasts & Illusions'],['Astryx','Cosmic','🌌','Cosmic Staff','Energy Projectiles'],['Chronel','Time','⏳','Time Blade','Slow & Time Control']];
-const villains=[['Veydrak','Blood','🩸','Crimson Scythe','Blood Energy & Control'],['Venoxis','Poison','☠️','Venom Blade','Toxic Attacks & Illusions'],['Magvar','Magma','🌋','Magma Hammer','Lava Attacks & Eruption'],['Voltaryn','Dark Lightning','⚡','Storm Spear','Destructive Lightning'],['Gravorn','Gravity','🌀','Gravity Mace','Pull/Push & Slow'],['Cryvex','Absolute Frost','❄️','Frozen Greatsword','Freezing & Ice Storms'],['Umbryx','Void','◼️','Void Scythe','Darkness & Void Energy'],['Draeven','Fear','👁️','Dread Blade','Fear Energy & Weakening'],['Ravoryx','Destruction','💥','Destruction Axe','Explosive Energy'],['Abyrion','Abyss','🕳️','Abyss Staff','Dark Portals & Energy'],['Morthyx','Soul','👻','Soul Reaper','Energy Drain'],['Zypharion','Chaos','🌀','Chaos Katana','Combination of Elements']];
-let side='hero',temp=null,hero=null,villain=null,playerHP=100,enemyHP=100,level=1;
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='select')renderCards();if(id==='levels')renderLevels();if(id==='two2')renderTeams()}
-function online(name){alert(name+' needs a real-time multiplayer backend. Offline mode is playable now.')}
-function startOffline(){side='hero';show('select')}
-function renderCards(){const arr=side==='hero'?heroes:villains;document.getElementById('selectTitle').textContent=side==='hero'?'Select Hero':'Select Villain';document.getElementById('selectSub').textContent=side==='hero'?'Choose your fighter':'Choose your opponent';document.getElementById('cards').innerHTML=arr.map((c,i)=>`<div class="card" onclick="details(${i})"><div class="avatar">${c[2]}</div><div class="name">${c[0]}</div><div class="small">${c[2]} ${c[1]}</div></div>`).join('')}
-function details(i){temp=(side==='hero'?heroes:villains)[i];document.getElementById('detailArt').textContent=temp[2];document.getElementById('detailName').textContent=temp[0];document.getElementById('detailMeta').textContent=temp[2]+' '+temp[1];document.getElementById('detailDesc').textContent='A legendary '+temp[1]+' fighter prepared for the Anime Legends arena.';document.getElementById('detailStats').innerHTML='<div class="stat"><b>Weapon:</b> '+temp[3]+'</div><div class="stat"><b>Power:</b> '+temp[4]+'</div><div class="stat"><b>Special:</b> Signature '+temp[1]+' Technique</div>';show('details')}
-function confirmCharacter(){if(side==='hero'){hero=temp;side='villain';show('select')}else{villain=temp;startBattle()}}
-function startBattle(){playerHP=100;enemyHP=100;document.getElementById('pName').textContent=hero[0];document.getElementById('eName').textContent=villain[0];document.getElementById('pArt').textContent=hero[2];document.getElementById('eArt').textContent=villain[2];document.getElementById('pPower').textContent=hero[4];document.getElementById('ePower').textContent=villain[4];document.getElementById('log').textContent='Your move.';updateHP();show('battle')}
-function updateHP(){document.getElementById('pBar').style.width=playerHP+'%';document.getElementById('eBar').style.width=enemyHP+'%';document.getElementById('pText').textContent=playerHP+' / 100';document.getElementById('eText').textContent=enemyHP+' / 100'}
-function attack(dmg){if(playerHP<=0||enemyHP<=0)return;enemyHP=Math.max(0,enemyHP-dmg);updateHP();if(enemyHP===0){win();return}document.getElementById('log').textContent=hero[0]+' used a power!';setTimeout(enemyTurn,500)}
-function enemyTurn(){if(playerHP<=0)return;const dmg=Math.random()<.15?0:10;playerHP=Math.max(0,playerHP-dmg);updateHP();document.getElementById('log').textContent=dmg?villain[0]+' attacks!':'The villain missed!';if(playerHP===0)document.getElementById('log').textContent='Defeated. Try again.'}
-function guard(){if(playerHP<=0||enemyHP<=0)return;playerHP=Math.min(100,playerHP+10);updateHP();document.getElementById('log').textContent='Guard restored 10 HP.';setTimeout(enemyTurn,500)}
-function win(){document.getElementById('winArt').textContent=hero[2];document.getElementById('winnerName').textContent=hero[0];document.getElementById('levelText').textContent='Level '+level+' completed!';show('winner')}
-function nextLevel(){if(level<100)level++;side='hero';show('select')}
-function renderLevels(){const gs=[['Easy',1,40],['Moderate',41,70],['Hard',71,100]];document.getElementById('levelGroups').innerHTML=gs.map(g=>'<div class="section"><h3>'+g[0]+' • Levels '+g[1]+'–'+g[2]+'</h3><div class="levels">'+Array.from({length:g[2]-g[1]+1},(_,j)=>'<button class="btn" onclick="level='+ (g[1]+j) +';startOffline()">'+(g[1]+j)+'</button>').join('')+'</div></div>').join('')}
-function renderTeams(){document.getElementById('heroTeam').innerHTML=heroes.slice(0,2).map(c=>'<div class="fighter" style="margin:8px">'+c[2]+' <b>'+c[0]+'</b><div class="hp"><i></i></div></div>').join('');document.getElementById('villainTeam').innerHTML=villains.slice(0,2).map(c=>'<div class="fighter" style="margin:8px">'+c[2]+' <b>'+c[0]+'</b><div class="hp"><i></i></div></div>').join('')}
-function toggle(b){b.textContent=b.textContent==='ON'?'OFF':'ON'}
+const heroes=[
+["Kaelron","Fire","🔥","Flame Sword","Fireballs & Flames"],
+["Ryven","Water","💧","Aqua Spear","Water Waves & Blades"],
+["Raizen","Lightning","⚡","Thunder Katana","Electric Attacks & Speed Boost"],
+["Kairox","Wind","🌪️","Twin Blades","Wind Blades & Gusts"],
+["Terrik","Earth","🪨","Earth Hammer","Rocks & Shields"],
+["Fryzen","Ice","❄️","Frost Axe","Ice Attacks & Freeze"],
+["Solvian","Light","☀️","Solar Blade","Energy Beams & Shield"],
+["Nyxen","Shadow","🌑","Shadow Scythe","Shadow Attacks & Teleport"],
+["Virel","Nature","🌿","Vine Bow","Vines & Thorns"],
+["Lunaris","Moon","🌙","Moon Chakram","Crescent Blasts & Illusions"],
+["Astryx","Cosmic","🌌","Cosmic Staff","Energy Projectiles"],
+["Chronel","Time","⏳","Time Blade","Slow & Time Control"]
+];
+
+const villains=[
+["Veydrak","Blood","🩸","Crimson Scythe","Blood Energy & Control"],
+["Venoxis","Poison","☠️","Venom Blade","Toxic Attacks & Illusions"],
+["Magvar","Magma","🌋","Magma Hammer","Lava Attacks & Eruption"],
+["Voltaryn","Dark Lightning","⚡","Storm Spear","Destructive Lightning"],
+["Gravorn","Gravity","🌀","Gravity Mace","Pull/Push & Slow"],
+["Cryvex","Absolute Frost","❄️","Frozen Greatsword","Freezing & Ice Storms"],
+["Umbryx","Void","◼️","Void Scythe","Darkness & Void Energy"],
+["Draeven","Fear","👁️","Dread Blade","Fear Energy & Weakening"],
+["Ravoryx","Destruction","💥","Destruction Axe","Explosive Energy"],
+["Abyrion","Abyss","🕳️","Abyss Staff","Dark Portals & Energy"],
+["Morthyx","Soul","👻","Soul Reaper","Energy Drain"],
+["Zypharion","Chaos","🌀","Chaos Katana","Combination of Elements"]
+];
+
+let selected=heroes[0];
+let playerHP=100;
+let enemyHP=100;
+
+function show(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function buildCharacters(){
+  const grid=document.getElementById("charGrid");
+  grid.innerHTML="";
+
+  heroes.forEach((c,i)=>{
+    grid.innerHTML+=`
+      <div class="char-card">
+        <div class="char-art">${c[2]}</div>
+        <h3>${c[0]}</h3>
+        <div class="element">${c[2]} ${c[1]}</div>
+        <button class="select-btn" onclick="details(${i})">Select</button>
+      </div>`;
+  });
+}
+
+function details(i){
+  selected=heroes[i];
+
+  document.getElementById("detailArt").textContent=selected[2];
+  document.getElementById("detailName").textContent=selected[0];
+  document.getElementById("detailElement").textContent="Element: "+selected[1];
+  document.getElementById("detailWeapon").textContent="Weapon: "+selected[3];
+  document.getElementById("detailPower").textContent="Power: "+selected[4];
+
+  show("details");
+}
+
+function startBattle(){
+  playerHP=100;
+  enemyHP=100;
+
+  document.getElementById("playerName").textContent=selected[0];
+  document.getElementById("playerArt").textContent=selected[2];
+  document.getElementById("playerPower").textContent=selected[4];
+
+  updateHP();
+  show("battle");
+}
+
+function attack(damage){
+  if(enemyHP<=0 || playerHP<=0)return;
+
+  enemyHP=Math.max(0,enemyHP-damage);
+  updateHP();
+
+  if(enemyHP<=0){
+    document.getElementById("winnerName").textContent=selected[0];
+    document.getElementById("winnerArt").textContent=selected[2];
+    setTimeout(()=>show("winner"),300);
+    return;
+  }
+
+  setTimeout(()=>{
+    playerHP=Math.max(0,playerHP-10);
+    updateHP();
+
+    if(playerHP<=0){
+      document.getElementById("winnerName").textContent="Venoxis";
+      document.getElementById("winnerArt").textContent="☠️";
+      setTimeout(()=>show("winner"),300);
+    }
+  },500);
+}
+
+function updateHP(){
+  document.getElementById("playerHp").style.width=playerHP+"%";
+  document.getElementById("enemyHp").style.width=enemyHP+"%";
+  document.getElementById("playerHpText").textContent=playerHP+" / 100";
+  document.getElementById("enemyHpText").textContent=enemyHP+" / 100";
+}
+
+function toggleSetting(btn){
+  btn.textContent=btn.textContent==="ON"?"OFF":"ON";
+}
+
+function buildLevels(){
+  const grid=document.getElementById("levelsGrid");
+
+  for(let i=1;i<=100;i++){
+    let cls=i<=40?"easy":i<=70?"medium":"hard";
+
+    grid.innerHTML+=`
+      <button class="level ${cls}" onclick="startBattle()">
+        ${i}
+      </button>`;
+  }
+}
+
+buildCharacters();
+buildLevels();
 </script>
+
 </body>
-</html>
+  </html>
